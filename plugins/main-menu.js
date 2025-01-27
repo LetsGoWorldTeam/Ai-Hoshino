@@ -32,7 +32,7 @@ const defaultMenu = {
 ☕︎  𝀢  塞缪尔ᅟ֪    ᴼᶠᴵᶜᴵᴬᴸ ᶜᴴᴬᴺᴺᴱᴸ https://whatsapp.com/channel/0029Vb2NkWWFsn0ghn9mOA2G
 ︶︶︶︶ ✰⃕  ⌇ *⭒ ⭒ ⭒*   ˚̩̥̩̥*̩̩͙✩
 
-◌⃘     ☕︎ ᪲   𑁯ᰍ *U𝗌𝗎𝖺𝗋𝗂𝗈𝗌* ꢁ *%totalreg
+◌⃘     ☕︎ ᪲   𑁯ᰍ *U𝗌𝗎𝖺𝗋𝗂𝗈𝗌* ꢁ *%totalreg*
 ࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛   .   ࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛࿙⃛࿚⃛
 %readmore
 ‹‹ *Comandos* ::
