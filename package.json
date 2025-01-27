@@ -23,16 +23,16 @@
 		"MD",
 		"baileys-md"
 	],
-	"homepage": "https://github.com/LetsGoWorldTeam/Ai-Hoshino",
+	"homepage": "https://github.com/StarlightsTeam/Ai-Hoshino",
 	"author": {
-		"name": "Mateo"
+		"name": "おDaniel.xyz⁩"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/LetsGoWorldTeam/Ai-Hoshino.git"
+		"url": "git+https://github.com/StarlightsTeam/Ai-Hoshino.git"
 	},
 	"bugs": {
-		"url": "https://github.com/LetsGoWorldTeam/Ai-Hoshino/issues"
+		"url": "https://github.com/StarlightsTeam/Ai-Hoshino/issues"
 	},
 	"license": "GPL-3.0-or-later",
 	"dependencies": {
