@@ -1,7 +1,3 @@
-/* 
-- Downloader CapCut By Angel-OFC 
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
-*/
 import fetch from "node-fetch";
 import cheerio from "cheerio";
 
@@ -16,11 +12,11 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
         const result = await capcutdl(text);
 
         if (!result) {
-            await m.react('❌');
-            return m.reply('❌ No se pudieron obtener los datos. Asegúrate de que la URL ingresada sea correcta.');
+            await m.react('✖');
+            return m.reply('🚩 Ingresa el enlace correcto de capcut.');
         }
 
-        const cpt = `*✔️🍟 Descargador de CapCut*\n\n> *• Título:* ${result.title}\n> *• Fecha:* ${result.date}\n> *• Usuario:* ${result.pengguna}\n> *• Me gusta:* ${result.likes}\n> *• Autor:* ${result.author.name}`;
+        const cpt = `*乂  C A P C U T - D L*\n\n✩ *Título* : ${result.title}\n✩ *Fecha* : ${result.date}\n✩ *Usuario* : ${result.pengguna}\n✩ *Me gusta* : ${result.likes}\n✩ *Autor* : ${result.author.name}`;
         await conn.sendFile(m.chat, result.videoUrl, '', cpt, m, {
             thumbnail: await fetch(result.posterUrl).then(res => res.buffer())
         });
@@ -28,8 +24,8 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
         await m.react('✅');
     } catch (error) {
         console.error(error);
-        await m.react('❌');
-        m.reply('Ocurrió un error al obtener los datos.');
+        await m.react('✖');
+        m.reply('🚩 Ocurrió un error al obtener los datos.');
     }
 };
 
@@ -54,7 +50,7 @@ async function capcutdl(url) {
         const authorName = $('span.lv-avatar-image img').attr('alt');
 
         if (!videoSrc || !posterSrc || !title || !date || !uses || !likes || !authorAvatar || !authorName) {
-            throw new Error('Algunos elementos importantes no se encontraron en la página.');
+            throw new Error('🚩 Algunos elementos importantes no fueron encontrados.');
         }
 
         return {            
@@ -70,7 +66,7 @@ async function capcutdl(url) {
             posterUrl: posterSrc
         };
     } catch (error) {
-        console.error('Error al obtener los detalles del video:', error.message);
+        console.error('🚩 Error al obtener los detalles:', error.message);
         return null;
     }
 }
