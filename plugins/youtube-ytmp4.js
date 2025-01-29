@@ -1,13 +1,7 @@
-/* 
-- Downloader Ytmp4 By DarkCore
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
-- Parchado por DarkCore... vip plus
-*/
-
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return conn.reply(m.chat, '❀ Ingresa un link de YouTube', m);
+    if (!text) return conn.reply(m.chat, '[ ✰ ] Ingresa el enlace del vídeo de *YouTube* junto al comando.\n\n`» Ejemplo :`\n' + `> *${usedPrefix + command}* https://youtu.be/NPpELzyP4rw`, m, rcanal)
 
     try {
         await m.react('🕒');
@@ -25,7 +19,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
         const durationInSeconds = parseInt(duration);
 
-        let HS = `🍃 *Título :* ${title}\n🍃 *Duración :* ${(durationInSeconds / 60).toFixed(2)} minutos`;
+        let HS = `*Título :* ${title}\n*Duración :* ${(durationInSeconds / 60).toFixed(2)} minutos`;
 
         if (durationInSeconds >= 2400) { 
             await conn.sendMessage(m.chat, { 
