@@ -23,13 +23,13 @@ async function buscarFuentes(consulta) {
         });
 
         if (resultados.length === 0) {
-            throw new Error("No se encontraron fuentes.");
+            throw new Error("🚩 No se encontraron fuentes.");
         }
 
         return resultados.slice(0, 5);
     } catch (error) {
-        console.error("Error al buscar fuentes:", error.message);
-        throw new Error("Error al buscar fuentes.");
+        console.error("🚩 Error al buscar fuentes:", error.message);
+        throw new Error("🚩 Error al buscar fuentes.");
     }
 }
 
@@ -37,7 +37,7 @@ const handler = async (m, { conn, text }) => {
     const consulta = text.trim();
     try {
         if (!consulta) {
-            return m.reply("`¿Nombre de la fuente?`");
+            return m.reply("🚩 Ingresa el nombre de la fuente", m, rcanal)
         }
 
         await m.react('🕒');
@@ -48,7 +48,7 @@ const handler = async (m, { conn, text }) => {
 
         await m.react('✅');
         await conn.sendMessage(m.chat, {
-            text: `*🔍 Resultados de búsqueda para* "- ${consulta}":\n\n${textoResultados}`,
+            text: `*🔍 Resultados de búsqueda para* "${consulta}":\n\n${textoResultados}`,
         });
     } catch (error) {
         console.error(error);
