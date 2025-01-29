@@ -20,10 +20,10 @@ async function getUserInfo(username) {
  *Siguiendo:* ${user.following}
  *Repositorios:* ${user.public_repos}
  *Cuenta creada:* ${formatDate(user.created_at)}
-        `;
+        `, m, rcanal);
     } catch (error) {
-        console.error('Error fetching user info:', error);
-        return 'Error fetching user info';
+        console.error('🚩 Error:', error);
+        return 'Error';
     }
 }
 
@@ -42,15 +42,15 @@ async function getUserRepos(username) {
  *Enlace:* ${repo.html_url}
         `).join('\n');
     } catch (error) {
-        console.error('Error fetching repositories:', error);
-        return 'Error fetching repositories';
+        console.error('🚩 Error:', error);
+        return 'Error';
     }
 }
 
 const handler = async (message, { conn }) => {
     const username = message.text.split(' ')[1];
     if (!username) {
-        return conn.reply(message.chat, '*Proporciona un usuario git*', message);
+        return conn.reply(message.chat, '🚩 Proporciona un usuario git', message);
     }
 
     const userInfo = await getUserInfo(username);
