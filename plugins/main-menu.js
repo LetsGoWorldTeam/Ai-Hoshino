@@ -24,6 +24,8 @@ let tags = {
   'audio': 'ᴬᵁᴰᴵᴼˢ', 
   'advanced': 'ᴬᵛᴬᴺᶻᴬᴰᴼ',
   'anime': 'ᴬᴺᴵᴹᴱ',
+  'dl': 'ᴰᴸ',
+  'dlarchive': 'ᴰᴸ ᴬᴿᶜᴴᴵᵛᴱ',
 }
 
 const defaultMenu = {
