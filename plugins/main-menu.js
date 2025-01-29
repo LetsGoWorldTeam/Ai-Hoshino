@@ -23,6 +23,7 @@ let tags = {
   'owner': 'ᶜᴿᴱᴬᴰᴼᴿ', 
   'audio': 'ᴬᵁᴰᴵᴼˢ', 
   'advanced': 'ᴬᵛᴬᴺᶻᴬᴰᴼ',
+  'anime': 'ᴬᴺᴵᴹᴱ',
 }
 
 const defaultMenu = {
