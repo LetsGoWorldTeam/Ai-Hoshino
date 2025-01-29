@@ -11,15 +11,15 @@ async function getUserInfo(username) {
         const user = response.data;
 
         return `
- *Usuario:* ${user.login}
- *Nombre:* ${user.name ? user.name : 'No disponible'}
- *Bio:* ${user.bio ? user.bio : 'No disponible'}
- *Ubicación:* ${user.location ? user.location : 'No disponible'}
- *Blog:* ${user.blog ? user.blog : 'No disponible'}
- *Seguidores:* ${user.followers}
- *Siguiendo:* ${user.following}
- *Repositorios:* ${user.public_repos}
- *Cuenta creada:* ${formatDate(user.created_at)}
+ » *Usuario:* ${user.login}
+ » *Nombre:* ${user.name ? user.name : 'No disponible'}
+ » *Bio:* ${user.bio ? user.bio : 'No disponible'}
+ » *Ubicación:* ${user.location ? user.location : 'No disponible'}
+ » *Blog:* ${user.blog ? user.blog : 'No disponible'}
+ » *Seguidores:* ${user.followers}
+ » *Siguiendo:* ${user.following}
+ » *Repositorios:* ${user.public_repos}
+ » *Cuenta creada:* ${formatDate(user.created_at)}
         `;
     } catch (error) {
         console.error('🚩 Error:', error);
@@ -33,13 +33,13 @@ async function getUserRepos(username) {
         const repos = response.data;
 
         return repos.map((repo, index) => `
- *Resultado:* ${1 + index}
- *Nombre:* ${repo.name}
- *Creado:* ${formatDate(repo.created_at)}
- *Actualizado:* ${formatDate(repo.updated_at)}
- *Estrellas:* ${repo.stargazers_count}
- *Descripción:* ${repo.description ? `${repo.description}` : 'Sin Descripción'}
- *Enlace:* ${repo.html_url}
+ » *Resultado:* ${1 + index}
+ » *Nombre:* ${repo.name}
+ » *Creado:* ${formatDate(repo.created_at)}
+ » *Actualizado:* ${formatDate(repo.updated_at)}
+ » *Estrellas:* ${repo.stargazers_count}
+ » *Descripción:* ${repo.description ? `${repo.description}` : 'Sin Descripción'}
+ » *Enlace:* ${repo.html_url}
         `).join('\n');
     } catch (error) {
         console.error('🚩 Error:', error);
@@ -57,14 +57,14 @@ const handler = async (message, { conn }) => {
     const userRepos = await getUserRepos(username);
 
     const result = `
-*Información del Usuario:*
+乂  I N F O - U S U A R I O
 ${userInfo}
 
-*Repositorios:*
+乂  R E P O S
 ${userRepos}
     `;
     
-    conn.reply(message.chat, result, message, m, null, rcanal);
+    conn.reply(message.chat, result, message);
 };
 
 handler.help = ['githubsearch *<texto>*'];
