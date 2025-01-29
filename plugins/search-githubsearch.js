@@ -20,7 +20,7 @@ async function getUserInfo(username) {
  *Siguiendo:* ${user.following}
  *Repositorios:* ${user.public_repos}
  *Cuenta creada:* ${formatDate(user.created_at)}
-        `, m, rcanal);
+        `;
     } catch (error) {
         console.error('🚩 Error:', error);
         return 'Error';
@@ -64,7 +64,7 @@ ${userInfo}
 ${userRepos}
     `;
     
-    conn.reply(message.chat, result, message);
+    conn.reply(message.chat, result, message, m, null, rcanal);
 };
 
 handler.help = ['githubsearch *<texto>*'];
