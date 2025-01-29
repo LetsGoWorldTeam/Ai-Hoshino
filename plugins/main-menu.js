@@ -25,6 +25,7 @@ let tags = {
   'advanced': 'ᴬᵛᴬᴺᶻᴬᴰᴼ',
   'anime': 'ᴬᴺᴵᴹᴱ',
   'dl': 'ᴰᴸ',
+  'Descargas de archivos': 'ᴰᴸ ᴬᴿᶜᴴᴵᵛᴱˢ',
 }
 
 const defaultMenu = {
