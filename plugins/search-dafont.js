@@ -37,7 +37,7 @@ const handler = async (m, { conn, text }) => {
     const consulta = text.trim();
     try {
         if (!consulta) {
-            return m.reply("🚩 Ingresa el nombre de la fuente", m, rcanal)
+            return m.reply("🚩 Ingresa el nombre de la fuente");
         }
 
         await m.react('🕒');
