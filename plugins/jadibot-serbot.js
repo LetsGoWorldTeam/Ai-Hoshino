@@ -31,7 +31,7 @@ let handler = async (_0x229076, {
   isOwner: _0x49d59e
 }) => {
   if (!global.db.data.settings[_0x3b0d31.user.jid].jadibotmd) {
-    return _0x3b0d31.reply(_0x229076.chat, "☁️ Este Comando está deshabilitado por mi creador.", _0x229076, rcanal);
+    return _0x3b0d31.reply(_0x229076.chat, "🚩 Este Comando está deshabilitado por mi creador.", _0x229076, rcanal);
   }
 const _0x4ea9f2 = _0x42414c[0x0] && /code/.test(_0x42414c[0x0].trim()) ? true : !!(_0x42414c[0x1] && /code/.test(_0x42414c[0x1].trim()));
 let _0x125157;
@@ -123,7 +123,7 @@ if (_0x4ea9f2) {
         'msgRetryCache': _0x36b413,
         'version': [0x2, 0xbb8, 0x3c8d6c7b],
         'syncFullHistory': true,
-        'browser': _0x4ea9f2 ? ["Ubuntu", "Chrome", "110.0.5585.95"] : ["Genesis-Ai (Sub Bot)", "Chrome", '2.0.0'],
+        'browser': _0x4ea9f2 ? ["Ubuntu", "Chrome", "110.0.5585.95"] : ["Ai-Hoshino (Sub Bot)", "Chrome", '2.0.0'],
         'defaultQueryTimeoutMs': undefined,
         'getMessage': async _0x3f6e20 => {
           if (store) {
@@ -131,7 +131,7 @@ if (_0x4ea9f2) {
             return _0xaa3d6b.message && undefined;
           }
           return {
-            'conversation': "Genesis-Ai"
+            'conversation': "Ai-Hoshino'"
           };
         }
       };
@@ -153,14 +153,27 @@ if (_0x4ea9f2) {
             'image': await _0x36edb8.toBuffer(_0x3a7bea, {
               'scale': 0x8
             }),
-            'caption': "✿ *Vincula tu cuenta usando el Qr.*\n\n_✰ Sigue las *instrucciones* :_\n\n`1` » Haga clic en los tres puntos en la esquina superior derecha\n\n`2` » Toca dispositivos vinculados\n\n`3` » Escanee este codigo QR para iniciar sesión\n\n *¡Este código QR expira en 45 segundos!*\n\n> *✰ Nota :* _Con otro celular o en la PC escanea este QR para convertirte en un Sub Bot_\n> *✿ Aviso :* _No es recomendable ser subbot en tu numero principal_" + _0x261df0.toString("utf-8")
+            'caption': '`–  S E R B O T  -  S U B B O T`\n\n'
+            txt += `┌  ✩  *Escanea este QR para ser en un Sub Bot*\n`
+            txt += `│  ✩  Pasos para escanear\n`
+            txt += `│  ✩  *1* : Haga click en los 3 puntos\n`
+            txt += `│  ✩  *2* : Toque dispositivos vinculados\n`
+            txt += `└  ✩  *3* : Escanea este QR\n\n`
+            txt += `> *Nota:* Este código QR expira en 30 segundos.` + _0x261df0.toString("utf-8")
           }, {
             'quoted': _0x229076
           });
         }
         if (_0x3a7bea && _0x4ea9f2) {
           _0x125157 = await _0x3b0d31.sendMessage(_0x229076.chat, {
-            'text': "✿ *Vincula tu cuenta usando el codigo.*\n\n_✰ Sigue las *instrucciones* :_\n\n`1` » Click en los 3 puntos\n\n`2` » Toque dispositivos vinculados\n\n`3` » Vincular nuevo dispositivo\n\n`4` » Selecciona Vincular con el número de teléfono\n\n> *✰ Nota :* _Este Código solo funciona en el número que lo solicito_\n> *✿ Aviso :* _No es recomendable ser subbot en tu numero principal_" + _0x261df0.toString('utf-8')
+            'text': ` –  *S E R B O T  -  S U B B O T*\n\n`
+            txt += `┌  ✩  *Usa este Código para convertirte en un Sub Bot*\n`
+            txt += `│  ✩  Pasos\n`
+            txt += `│  ✩  *1* : Haga click en los 3 puntos\n`
+            txt += `│  ✩  *2* : Toque dispositivos vinculados\n`
+            txt += `│  ✩  *3* : Selecciona *Vincular con el número de teléfono*\n` 
+            txt += `└  ✩  *4* : Escriba el Codigo\n\n`
+            txt += `*Nota:* Este Código solo funciona en el número que lo solicito` + _0x261df0.toString('utf-8')
           }, {
             'quoted': _0x229076
           });
@@ -189,7 +202,7 @@ if (_0x4ea9f2) {
           console.log(_0x4f039f);
           if (_0x4f039f == 0x195) {
             await _0x2a39f4.unlinkSync('./' + jadi + '/' + _0x3596f8 + "/creds.json");
-            return await _0x229076.reply("☁️ Reenvia nuevamente el comando.");
+            return await _0x229076.reply("🚩 Reenvia nuevamente el comando.");
           }
           if (_0x4f039f === DisconnectReason.restartRequired) {
             _0x5c4c72();
@@ -197,24 +210,24 @@ if (_0x4ea9f2) {
           } else {
             if (_0x4f039f === DisconnectReason.loggedOut) {
               sleep(0xfa0);
-              return _0x229076.reply("☁️ *La conexión se ha cerrado, tendras que volver a conectarse usando:*\n!deletesesion (Para borrar los datos y poder volver a solicitar el QR o el código de emparejamiento");
+              return _0x229076.reply("🚩 *La conexión se ha cerrado, tendras que volver a conectarse usando:*\n.deletesesion (Para borrar los datos y poder volver a solicitar el QR o el código de emparejamiento");
             } else {
               if (_0x4f039f == 0x1ac) {
                 await _0x315841(false);
-                return _0x229076.reply("☁️ La conexión se ha cerrado de manera inesperada, intentaremos reconectar...");
+                return _0x229076.reply("🚩 La conexión se ha cerrado de manera inesperada, intentaremos reconectar...");
               } else {
                 if (_0x4f039f === DisconnectReason.connectionLost) {
                   await _0x5c4c72();
-                  return console.log("\n⚠️ Conexión perdida con el servidor, reconectando....");
+                  return console.log("\n🚩 Conexión perdida con el servidor, reconectando....");
                 } else {
                   if (_0x4f039f === DisconnectReason.badSession) {
-                    return await _0x229076.reply("☁️ *La conexión se ha cerrado, deberá de conectarse manualmente*");
+                    return await _0x229076.reply("🚩 *La conexión se ha cerrado, deberá de conectarse manualmente*");
                   } else {
                     if (_0x4f039f === DisconnectReason.timedOut) {
                       await _0x315841(false);
                       return console.log("\n⌛ Tiempo de conexión agotado, reconectando....");
                     } else {
-                      console.log("\n⚠️❗ Razón de la desconexión desconocida: " + (_0x4f039f || '') + " >> " + (_0x18ef48 || ''));
+                      console.log("\n🚩 Razón de la desconexión desconocida: " + (_0x4f039f || '') + " >> " + (_0x18ef48 || ''));
                     }
                   }
                 }
@@ -230,7 +243,7 @@ if (_0x4ea9f2) {
           global.conns.push(_0x4e0ea3);
           await joinChannels(_0x4e0ea3);
           await _0x3b0d31.sendMessage(_0x229076.chat, {
-            'text': _0x42414c[0x0] ? "⚪ *Está conectado(a)!! Por favor espere se está cargando los mensajes...*\n\n♻️ *Opciones Disponibles:*\n*» " + _0x3dccaa + "pausarai _(Detener la función Sub Bot)_*\n*» " + _0x3dccaa + "deletesession _(Borrar todo rastro de Sub Bot)_*\n*» " + _0x3dccaa + "serbot _(Nuevo código QR o Conectarse si ya es Sub Bot)_*" : "*`[ Conectado Exitosamente 🤍 ]`*\n> _Se intentara reconectar en caso de desconexion de sesion_\n> _Si quieres eliminr el subbot borra la sesion en dispositivos vinculados_\n> _El número del bot puede cambiar, guarda este enlace :_\nhttps://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y" + (" " + (_0x3dccaa + _0x509ed3))
+            'text': _0x42414c[0x0] ? 'Conectado con exito' : 'Conectado exitosamente con WhatsApp\n\n*Nota:* Esto es temporal\nSi el Bot principal se reinicia o se desactiva, todos los sub bots tambien lo haran\n\nEl número del bot puede cambiar, guarda este enlace:\n*-* https://whatsapp.com/channel/0029Vb2NkWWFsn0ghn9mOA2G' + (" " + (_0x3dccaa + _0x509ed3))
           }, {
             'quoted': _0x229076
           });
@@ -331,7 +344,7 @@ if (_0x4ea9f2) {
     _0x5c4c72();
   });
 };
-handler.help = ['serbot', "serbot code"];
+handler.help = ['serbot', "code"];
 handler.tags = ['serbot'];
 handler.command = ["jadibot", "serbot"];
 export default handler;
