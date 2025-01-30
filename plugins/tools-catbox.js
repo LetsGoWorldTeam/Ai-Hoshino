@@ -38,12 +38,12 @@ let handler = async (m, { conn }) => {
       await m.react('✅');
     } else {
       await m.react('✖️');
-      m.reply('🚩 Error al subir el archivo a Catbox.moe.', m, rcanal)
+      m.reply('❌ Error al subir el archivo a Catbox.moe.');
     }
   } catch (error) {
     console.error(error);
     await m.react('✖️');
-    m.reply('🚩 Error al intentar subir el archivo.', m, rcanal)
+    m.reply('❌ Error al intentar subir el archivo.');
   }
 };
 
