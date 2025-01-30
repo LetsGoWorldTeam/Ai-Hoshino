@@ -344,7 +344,7 @@ if (_0x4ea9f2) {
     _0x5c4c72();
   });
 };
-handler.help = ['serbot', "code"];
+handler.help = ['serbot', "serbot code"];
 handler.tags = ['serbot'];
 handler.command = ["jadibot", "serbot"];
 export default handler;
