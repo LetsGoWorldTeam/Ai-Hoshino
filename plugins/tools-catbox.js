@@ -7,7 +7,9 @@ let handler = async (m, { conn }) => {
   let mime = (q.msg || q).mimetype || '';
 
   if (!mime) {
-    return m.reply('🚩 Responde a un archivo válido (imagen, video, etc.).', m, rcanal)
+    return m.reply('🚩 Responde a un archivo válido *imagen, video, etc.*');
+  }
+
   await m.react('🕓');
 
   let media = await q.download();
@@ -38,12 +40,12 @@ let handler = async (m, { conn }) => {
       await m.react('✅');
     } else {
       await m.react('✖️');
-      m.reply('❌ Error al subir el archivo a Catbox.moe.');
+      m.reply('🚩 Error al subir el archivo a Catbox.moe.');
     }
   } catch (error) {
     console.error(error);
     await m.react('✖️');
-    m.reply('❌ Error al intentar subir el archivo.');
+    m.reply('🚩 Error al intentar subir el archivo.');
   }
 };
 
