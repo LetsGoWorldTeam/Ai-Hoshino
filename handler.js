@@ -36,6 +36,8 @@ export async function handler(chatUpdate) {
             if (user) {
                 if (!isNumber(user.exp))
                     user.exp = 0
+                if (!isNumber(user.zenis))
+                    user.zenis = 0
                 if (!isNumber(user.limit))
                     user.limit = 10
                 if (!('premium' in user)) 
@@ -67,6 +69,7 @@ export async function handler(chatUpdate) {
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
+                    zenis: 100,
                     limit: 10,
                     registered: false,
                     name: m.name,
@@ -87,21 +90,30 @@ export async function handler(chatUpdate) {
                     chat.isBanned = false
                 if (!('bienvenida' in chat))
                     chat.bienvenida = true 
+                if (!('Despedida'in chat))
+                   chat.despedida = false
+                 if(!('jadibot' in chat)) 
+                   chat.jadibot = false
                 if (!('antiLink' in chat))
                     chat.antiLink = false
                 if (!('onlyLatinos' in chat))
                     chat.onlyLatinos = false
                  if (!('nsfw' in chat))
                     chat.nsfw = false
+                 if (!('modoadmin' in chat))
+                     chat.modoadmin = true
                 if (!isNumber(chat.expired))
                     chat.expired = 0
             } else
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
                     bienvenida: true,
+                    despedida: false,
+                    jadibot: false, 
                     antiLink: false,
                     onlyLatinos: false,
                     nsfw: false, 
+                    modoadmin: true,
                     expired: 0, 
                 }
             var settings = global.db.data.settings[this.user.jid]
@@ -411,7 +423,7 @@ global.dfail = (type, m, conn, usedPrefix) => {
         private: `✯ Hola, este comando solo puede ser utilizado en mi Chat *Privado*.`,
         admin: `✯ Hola, este comando solo puede ser utilizado por los *Administradores* del Grupo.`,
         botAdmin: `✯ Hola, la bot debe ser *Administradora* para ejecutar este Comando.`,
-        unreg: `✯ Hola, para usar este comando debes estar *Registrado.*\n\nPara usar el bot debes registrarte primero\n\nUtiliza: *.reg nombre.edad*\n\n_Ejemplo: *.reg Mateo.15*_\n\nNo pongas los * *`,
+        unreg: `✯ Hola, para usar este comando debes estar *Registrado.*\n\nUtiliza: *.reg nombre.edad*\n\n_Ejemplo: *.reg Mateo.15*_`,
         restrict: `✯ Hola, esta característica está *deshabilitada.*`  
     }[type]
     if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))
