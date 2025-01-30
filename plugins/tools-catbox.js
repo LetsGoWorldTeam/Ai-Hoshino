@@ -8,8 +8,6 @@ let handler = async (m, { conn }) => {
 
   if (!mime) {
     return m.reply('🚩 Responde a un archivo válido (imagen, video, etc.).', m, rcanal)
-  }
-
   await m.react('🕓');
 
   let media = await q.download();
