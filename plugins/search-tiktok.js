@@ -1,59 +1,91 @@
-import fetch from 'node-fetch';
 import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+const baileys = (await import("@whiskeysockets/baileys")).default;
+const { proto } = baileys;
+const { generateWAMessageFromContent } = baileys;
+const { generateWAMessageContent } = baileys;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const handler = async (m, { text, conn }) => {
-    if (!text) throw `🚩 Ingresa el nombre del video que deseas buscar en TikTok.\n\nEjemplo:\n> *${usedPrefix + command}* Paulo Londra`, m, rcanal)
-
-    const searchQuery = encodeURIComponent(text);
-    const apiUrl = `https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=${searchQuery}`;
-
+let handler = async (message, { conn, text }) => {
+    if (!text) {
+        return conn.reply(message.chat, ' *驴Qu茅 video de TikTok quieres descargar?*', message);
+    }
+    async function createVideoMessage(url) {
+        const { videoMessage } = await generateWAMessageContent(
+            { video: { url } },
+            { upload: conn.waUploadToServer }
+        );
+        return videoMessage;
+    }
     try {
-        const response = await fetch(apiUrl);
-        const result = await response.json();
+        const { data: response } = await axios.get(`https://rembotapi.vercel.app/api/tiktoksearch?text=${encodeURIComponent(text)}`);
 
-        if (result.status !== 200) throw 'Resultados no encontrados.';
+        if (!response.status) {
+            return conn.reply(message.chat, ' *No se pudo descargar el video de TikTok.*', message);
+        }
+        const videos = response.resultado; 
+        if (videos.length < 4) {
+            return conn.reply(message.chat, ' *No se encontraron suficientes videos.*', message);
+        }
+        const responseMessages = await Promise.all(videos.slice(0, 8).map(async (video) => {
+            const videoMessage = await createVideoMessage(video.videoUrl);
+            return {
+                body: proto.Message.InteractiveMessage.Body.fromObject({
+                    text: null
+                }),
+                footer: proto.Message.InteractiveMessage.Footer.fromObject({
+                    text: `饾殐饾殥饾殱饾殲饾殨饾殬: ${video.description}`
+                }),
+                header: proto.Message.InteractiveMessage.Header.fromObject({
+                    hasMediaAttachment: true,
+                    videoMessage
+                }),
+                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
+                    buttons: []
+                })
+            };
+        }));
 
-        const videos = result.data;
-        if (!videos.length) throw 'Resultados no encontrados.';
-
-        const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-
-        const videoMessage = `
-*» Título* : ${randomVideo.title}
-*» Creador* : ${randomVideo.creator}
-*» Vistas* : ${randomVideo.views}
-*» Likes* : ${randomVideo.likes}
-*» Comentarios* : ${randomVideo.comments}
-        `;
-
-        const videoUrl = randomVideo.nowm; 
-        const videoPath = path.join(__dirname, 'video.mp4');
-
-        const responseVideo = await axios({
-            method: 'get',
-            url: videoUrl,
-            responseType: 'stream',
+        const carouselMessage = proto.Message.InteractiveMessage.CarouselMessage.fromObject({
+            cards: responseMessages
         });
 
-        responseVideo.data.pipe(fs.createWriteStream(videoPath)).on('finish', async () => {
-            const media = fs.readFileSync(videoPath);
-            await conn.sendMessage(m.chat, { video: media, caption: videoMessage });
+        const responseMessage = generateWAMessageFromContent(
+            message.chat,
+            {
+                viewOnceMessage: {
+                    message: {
+                        messageContextInfo: {
+                            deviceListMetadata: {},
+                            deviceListMetadataVersion: 2
+                        },
+                        interactiveMessage: proto.Message.InteractiveMessage.fromObject({
+                            body: proto.Message.InteractiveMessage.Body.create({
+                                text: null
+                            }),
+                            footer: proto.Message.InteractiveMessage.Footer.create({
+                                text: ' `饾檹 饾檮 饾檰 饾檹 饾檴 饾檰  饾檸饾檧饾樇饾檷饾樉饾檭`'
+                            }),
+                            header: proto.Message.InteractiveMessage.Header.create({
+                                title: null,
+                                hasMediaAttachment: false
+                            }),
+                            carouselMessage
+                        })
+                    }
+                }
+            },
+            { quoted: message }
+        );
 
-            fs.unlinkSync(videoPath);
-        });
+        await conn.relayMessage(message.chat, responseMessage.message, { messageId: responseMessage.key.id });
+
     } catch (error) {
-        console.error(error);
-        m.reply('Resultados no encontrados.');
+        await conn.reply(message.chat, error.toString(), message);
     }
 };
 
-handler.command = ['tiktoksearch', 'tiktoks'];
+handler.help = ['tiktokdl <url>'];
+handler.tags = ['downloader'];
+handler.command = ['tiktoksearch','tts','ttsearch'];
 handler.register = true
 
 export default handler;
