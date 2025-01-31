@@ -6,7 +6,7 @@ const { generateWAMessageContent } = baileys;
 
 let handler = async (message, { conn, text }) => {
     if (!text) {
-        return conn.reply(message.chat, ' *🚩 ¿Qué término de búsqueda quieres usar para encontrar imágenes en Pinterest?*', message);
+        return conn.reply(message.chat, '🚩 Ingresa el nombre de la imágen que estas buscando.\n\n`Ejemplo:`\n' + `> *${usedPrefix + command}* Ai Hoshino Icons', message);
     }
 
     async function createImageMessage(url) {
