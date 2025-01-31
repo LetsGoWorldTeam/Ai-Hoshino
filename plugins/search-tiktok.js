@@ -6,7 +6,7 @@ const { generateWAMessageContent } = baileys;
 
 let handler = async (message, { conn, text }) => {
     if (!text) {
-        return conn.reply(message.chat, ' *驴Qu茅 video de TikTok quieres descargar?*', message);
+        return conn.reply(message.chat, '🚩 Ingresa el nombre video que deseas buscar en TikTok.', message);
     }
     async function createVideoMessage(url) {
         const { videoMessage } = await generateWAMessageContent(
@@ -19,11 +19,11 @@ let handler = async (message, { conn, text }) => {
         const { data: response } = await axios.get(`https://rembotapi.vercel.app/api/tiktoksearch?text=${encodeURIComponent(text)}`);
 
         if (!response.status) {
-            return conn.reply(message.chat, ' *No se pudo descargar el video de TikTok.*', message);
+            return conn.reply(message.chat, 'No se pudo descargar el video de TikTok.', message);
         }
         const videos = response.resultado; 
         if (videos.length < 4) {
-            return conn.reply(message.chat, ' *No se encontraron suficientes videos.*', message);
+            return conn.reply(message.chat, 'No se encontraron suficientes videos.', message);
         }
         const responseMessages = await Promise.all(videos.slice(0, 8).map(async (video) => {
             const videoMessage = await createVideoMessage(video.videoUrl);
@@ -32,7 +32,7 @@ let handler = async (message, { conn, text }) => {
                     text: null
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.fromObject({
-                    text: `饾殐饾殥饾殱饾殲饾殨饾殬: ${video.description}`
+                    text: `? Título : ${video.description}`
                 }),
                 header: proto.Message.InteractiveMessage.Header.fromObject({
                     hasMediaAttachment: true,
@@ -62,7 +62,7 @@ let handler = async (message, { conn, text }) => {
                                 text: null
                             }),
                             footer: proto.Message.InteractiveMessage.Footer.create({
-                                text: ' `饾檹 饾檮 饾檰 饾檹 饾檴 饾檰  饾檸饾檧饾樇饾檷饾樉饾檭`'
+                                text: ' `乂  T I K T O K - S E A R C H`'
                             }),
                             header: proto.Message.InteractiveMessage.Header.create({
                                 title: null,
