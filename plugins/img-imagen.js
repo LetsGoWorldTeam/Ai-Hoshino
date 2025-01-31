@@ -81,7 +81,7 @@ let handler = async (message, { conn, text }) => {
     }
 };
 handler.help = ['imagen <text>'];
-handler.tags = ['search'];
+handler.tags = ['img'];
 handler.command = ['img', 'imagen', 'gimage'];
 
 export default handler;
