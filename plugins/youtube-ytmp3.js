@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw `Proporcióname el enlace de YouTube para que pueda ayudarte. 🎵`, m, rcanal);
+  if (!text) throw `Proporcióname el enlace de YouTube para que pueda ayudarte. 🎵`;
 
   await m.react('🕓');
 
