@@ -11,7 +11,7 @@ let texto = `*乂  A P T O I D E  -  D O W N L O A D*\n\n`
     txt += `	✩   *Descargas* : ${amount_downloads}\n`
     txt += `	✩   *Peso* :  ${size}\n\n`
     txt += `*- ↻ El archivo se esta enviando espera un momento, soy lenta. . .*`
-await conn.sendFile(m.chat, icon, name + '.jpg', texto, m)
+await conn.sendFile(m.chat, icon, name + '.jpg', texto, m, rcanal)
 
 await conn.sendMessage(m.chat, { document: { url: URL }, mimetype: 'application/vnd.android.package-archive', fileName: name + '.apk', caption: ''}, { quoted: m });
 }
