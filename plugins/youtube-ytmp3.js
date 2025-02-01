@@ -1,7 +1,5 @@
 import fetch from 'node-fetch'
 
-const limit = 100
-
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) { return conn.reply(m.chat, '[ ✰ ] Ingresa el enlace del vídeo de *YouTube* junto al comando.\n\n`» Ejemplo :`\n' + `> *${usedPrefix + command}* https://youtu.be/QSvaCSt8ixs`, m, rcanal)}
 
