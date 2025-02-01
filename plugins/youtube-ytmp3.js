@@ -1,7 +1,7 @@
-import fetch from 'node-fetch'
+import fetch from 'node-fetch';
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) { return conn.reply(m.chat, '[ ✰ ] Ingresa el enlace del vídeo de *YouTube* junto al comando.\n\n`» Ejemplo :`\n' + `> *${usedPrefix + command}* https://youtu.be/QSvaCSt8ixs`, m, rcanal)}
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) throw `Proporcióname el enlace de YouTube para que pueda ayudarte. 🎵`, m, rcanal);
 
   await m.react('🕓');
 
