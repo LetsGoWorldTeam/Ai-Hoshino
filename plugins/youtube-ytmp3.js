@@ -22,16 +22,16 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
       await m.react('✅');
     } else {
-      throw new Error('Error: Unable to fetch audio');
+      throw new Error('Resultado no Encontrado.');
     }
   } catch (error) {
-    await m.react('❌');
-    m.reply(`❌ *Error:* ${error.message || 'An unknown error occurred'}`);
+    await m.react('✖');
+    m.reply(`Resultado no Encontrado. ${error.message || 'An unknown error occurred'}`);
   }
 };
 
 handler.help = ['ytmp3 *<url>*']; 
 handler.command = ['ytmp3'];
-handler.tags = ['dl'];
+handler.tags = ['downloader'];
 
 export default handler;
